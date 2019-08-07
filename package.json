@@ -1,0 +1,22 @@
+{
+  "name": "rx-riddles-typescript",
+  "version": "1.0.0",
+  "description": "Riddling your way to master RxJS",
+  "scripts": {
+    "test": "jasmine-ts --config=jasmine.json"
+  },
+  "keywords": [],
+  "author": "jakovljevic.mladen@gmail.com",
+  "license": " Apache-2.0 ",
+  "dependencies": {
+    "rxjs": "~6.5.2",
+    "ts-node": "~5.0.1",
+    "typescript": "~3.5.3"
+  },
+  "devDependencies": {
+    "@types/jasmine": "~3.3.16",
+    "@types/node": "~12.6.9",
+    "jasmine": "~3.4.0",
+    "jasmine-ts": "^0.3.0"
+  }
+}
