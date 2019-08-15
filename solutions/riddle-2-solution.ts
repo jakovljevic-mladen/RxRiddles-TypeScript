@@ -1,7 +1,7 @@
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { Riddle2 } from '../riddles/riddle-2';
-import { map } from 'rxjs/operators';
 
 export class Riddle2Solution implements Riddle2 {
 
