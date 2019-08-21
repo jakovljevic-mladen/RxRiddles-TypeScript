@@ -14,8 +14,8 @@ describe('Riddle 5', () => {
   });
 
   it('should sum up multiple values', () => {
-    const source1Marbles =  '--a-b--c----d-|';
-    const source2Marbles =  '---b-a-b-|';
+    const source1Marbles = ' --a-b--c----d-|';
+    const source2Marbles = ' ---b-a-b-|';
     const expectedMarbles = '---ijk-(lm)-n-|';
     const sourceValues = { a: 4, b: 5, c: -2, d: 1 };
     const expectedValues = {

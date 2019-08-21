@@ -14,7 +14,7 @@ describe('Riddle 4', () => {
   });
 
   it('should emmit [false] value (verified with marbles)', () => {
-    const sourceMarbles = '--a-|';
+    const sourceMarbles = '  --a-|';
     const expectedMarbles = '--a-|';
     const expectedValues = { a: false };
 
@@ -28,7 +28,7 @@ describe('Riddle 4', () => {
   });
 
   it('should emmit [false, true] values', () => {
-    const sourceMarbles = '--a-b-|';
+    const sourceMarbles = '  --a-b-|';
     const expectedMarbles = '--a-b-|';
     const expectedValues = { a: false, b: true };
 
@@ -42,7 +42,7 @@ describe('Riddle 4', () => {
   });
 
   it('should emmit [false, true, false] values', () => {
-    const sourceMarbles = '--a-b-c-|';
+    const sourceMarbles = '  --a-b-c-|';
     const expectedMarbles = '--a-b-c-|';
     const expectedValues = { a: false, b: true, c: false };
 
@@ -56,7 +56,7 @@ describe('Riddle 4', () => {
   });
 
   it('should emmit [false, true, false, true] values', () => {
-    const sourceMarbles = '--a-b-c-d-|';
+    const sourceMarbles = '  --a-b-c-d-|';
     const expectedMarbles = '--a-b-c-d-|';
     const expectedValues = { a: false, b: true, c: false, d: true };
 
