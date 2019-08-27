@@ -1,9 +1,17 @@
 import { of } from 'rxjs';
-import { cold } from 'jasmine-marbles';
+import { TestScheduler } from 'rxjs/testing';
 
 import { Riddle5Solution } from '../solutions/riddle-5-solution';
 
 describe('Riddle 5', () => {
+
+  let scheduler: TestScheduler;
+
+  beforeEach(() => {
+    scheduler = new TestScheduler((actual, expected) => {
+      expect(actual).toEqual(expected);
+    });
+  });
 
   it('should sum up two values', () => {
     const riddle5 = new Riddle5Solution();
@@ -14,26 +22,29 @@ describe('Riddle 5', () => {
   });
 
   it('should sum up multiple values', () => {
-    const source1Marbles = ' --a-b--c----d-|';
-    const source2Marbles = ' ---b-a-b-|';
-    const expectedMarbles = '---ijk-(lm)-n-|';
-    const sourceValues = { a: 4, b: 5, c: -2, d: 1 };
-    const expectedValues = {
-      i: 9, // a + b
-      j: 10, // b + b
-      k: 9, // b + a
-      l: 2, // a + c
-      m: 3, // c + b
-      n: 6 // b + d
-    };
+    scheduler.run(helpers => {
+      const { cold, expectObservable } = helpers;
 
-    const source1$ = cold(source1Marbles, sourceValues);
-    const source2$ = cold(source2Marbles, sourceValues);
-    const expected$ = cold(expectedMarbles, expectedValues);
+      const source1Marbles = ' --a-b--c----d-|';
+      const source2Marbles = ' ---b-a-b-|';
+      const expectedMarbles = '---ijk-(lm)-n-|';
+      const sourceValues = { a: 4, b: 5, c: -2, d: 1 };
+      const expectedValues = {
+        i: 9, // a + b
+        j: 10, // b + b
+        k: 9, // b + a
+        l: 2, // a + c
+        m: 3, // c + b
+        n: 6 // b + d
+      };
 
-    const riddle5 = new Riddle5Solution();
-    const result$ = riddle5.solve(source1$, source2$);
+      const source1$ = cold(source1Marbles, sourceValues);
+      const source2$ = cold(source2Marbles, sourceValues);
 
-    expect(result$).toBeObservable(expected$);
+      const riddle5 = new Riddle5Solution();
+      const result$ = riddle5.solve(source1$, source2$);
+
+      expectObservable(result$).toBe(expectedMarbles, expectedValues);
+    });
   });
 });

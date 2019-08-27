@@ -1,9 +1,17 @@
 import { of } from 'rxjs';
-import { cold } from 'jasmine-marbles';
+import { TestScheduler } from 'rxjs/testing';
 
 import { Riddle4Solution } from '../solutions/riddle-4-solution';
 
 describe('Riddle 4', () => {
+
+  let scheduler: TestScheduler;
+
+  beforeEach(() => {
+    scheduler = new TestScheduler((actual, expected) => {
+      expect(actual).toEqual(expected);
+    });
+  });
 
   it('should emmit [false] value (verified with subscription)', () => {
     const riddle4 = new Riddle4Solution();
@@ -14,58 +22,70 @@ describe('Riddle 4', () => {
   });
 
   it('should emmit [false] value (verified with marbles)', () => {
-    const sourceMarbles = '  --a-|';
-    const expectedMarbles = '--a-|';
-    const expectedValues = { a: false };
+    scheduler.run(helpers => {
+      const { cold, expectObservable } = helpers;
 
-    const source$ = cold(sourceMarbles);
-    const expected$ = cold(expectedMarbles, expectedValues);
+      const sourceMarbles = '  --a-|';
+      const expectedMarbles = '--a-|';
+      const expectedValues = { a: false };
 
-    const riddle4 = new Riddle4Solution();
-    const result$ = riddle4.solve(source$);
+      const source$ = cold<void>(sourceMarbles);
 
-    expect(result$).toBeObservable(expected$);
+      const riddle4 = new Riddle4Solution();
+      const result$ = riddle4.solve(source$);
+
+      expectObservable(result$).toBe(expectedMarbles, expectedValues);
+    });
   });
 
   it('should emmit [false, true] values', () => {
-    const sourceMarbles = '  --a-b-|';
-    const expectedMarbles = '--a-b-|';
-    const expectedValues = { a: false, b: true };
+    scheduler.run(helpers => {
+      const { cold, expectObservable } = helpers;
 
-    const source$ = cold(sourceMarbles);
-    const expected$ = cold(expectedMarbles, expectedValues);
+      const sourceMarbles = '  --a-b-|';
+      const expectedMarbles = '--a-b-|';
+      const expectedValues = { a: false, b: true };
 
-    const riddle4 = new Riddle4Solution();
-    const result$ = riddle4.solve(source$);
+      const source$ = cold<void>(sourceMarbles);
 
-    expect(result$).toBeObservable(expected$);
+      const riddle4 = new Riddle4Solution();
+      const result$ = riddle4.solve(source$);
+
+      expectObservable(result$).toBe(expectedMarbles, expectedValues);
+    });
   });
 
   it('should emmit [false, true, false] values', () => {
-    const sourceMarbles = '  --a-b-c-|';
-    const expectedMarbles = '--a-b-c-|';
-    const expectedValues = { a: false, b: true, c: false };
+    scheduler.run(helpers => {
+      const { cold, expectObservable } = helpers;
 
-    const source$ = cold(sourceMarbles);
-    const expected$ = cold(expectedMarbles, expectedValues);
+      const sourceMarbles = '  --a-b-c-|';
+      const expectedMarbles = '--a-b-c-|';
+      const expectedValues = { a: false, b: true, c: false };
 
-    const riddle4 = new Riddle4Solution();
-    const result$ = riddle4.solve(source$);
+      const source$ = cold<void>(sourceMarbles);
 
-    expect(result$).toBeObservable(expected$);
+      const riddle4 = new Riddle4Solution();
+      const result$ = riddle4.solve(source$);
+
+      expectObservable(result$).toBe(expectedMarbles, expectedValues);
+    });
   });
 
   it('should emmit [false, true, false, true] values', () => {
-    const sourceMarbles = '  --a-b-c-d-|';
-    const expectedMarbles = '--a-b-c-d-|';
-    const expectedValues = { a: false, b: true, c: false, d: true };
+    scheduler.run(helpers => {
+      const { cold, expectObservable } = helpers;
 
-    const source$ = cold(sourceMarbles);
-    const expected$ = cold(expectedMarbles, expectedValues);
+      const sourceMarbles = '  --a-b-c-d-|';
+      const expectedMarbles = '--a-b-c-d-|';
+      const expectedValues = { a: false, b: true, c: false, d: true };
 
-    const riddle4 = new Riddle4Solution();
-    const result$ = riddle4.solve(source$);
+      const source$ = cold<void>(sourceMarbles);
 
-    expect(result$).toBeObservable(expected$);
+      const riddle4 = new Riddle4Solution();
+      const result$ = riddle4.solve(source$);
+
+      expectObservable(result$).toBe(expectedMarbles, expectedValues);
+    });
   });
 });
