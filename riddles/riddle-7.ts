@@ -7,5 +7,5 @@ export interface Riddle7 {
    *
    * Use case: You never want to show the same value twice.
    */
-  solve(source: Observable<number>): Observable<number>
+  solve(source: Observable<number>): Observable<number>;
 }

@@ -7,5 +7,5 @@ export interface Riddle2 {
    *
    * Use case: You want to transform the data.
    */
-  solve(source: Observable<number>): Observable<number>
+  solve(source: Observable<number>): Observable<number>;
 }

@@ -7,5 +7,5 @@ export interface Riddle3 {
    *
    * Use case: You want to filter certain items out.
    */
-  solve(source: Observable<number>): Observable<number>
+  solve(source: Observable<number>): Observable<number>;
 }

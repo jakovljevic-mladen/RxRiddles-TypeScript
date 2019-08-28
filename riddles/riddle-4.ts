@@ -8,5 +8,5 @@ export interface Riddle4 {
    *
    * Use case: Some button that can toggle two states. For instance a switch between White & Dark theme.
    */
-  solve(source: Observable<void>): Observable<boolean>
+  solve(source: Observable<void>): Observable<boolean>;
 }

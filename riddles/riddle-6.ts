@@ -7,5 +7,5 @@ export interface Riddle6 {
    *
    * Use case: Execute two network requests in parallel and wait for each other and process the combined data.
    */
-  solve(first: Observable<number>, second: Observable<number>): Observable<number[]>
+  solve(first: Observable<number>, second: Observable<number>): Observable<number[]>;
 }

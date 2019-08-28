@@ -7,5 +7,5 @@ export interface Riddle8 {
    *
    * Use case: Make an Observable "lazy" for some time. For instance, when wanting to postpone some UI action.
    */
-  solve(source: Observable<number>): Observable<number>
+  solve(source: Observable<number>): Observable<number>;
 }
