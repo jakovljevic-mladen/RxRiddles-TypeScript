@@ -13,8 +13,7 @@ describe('Riddle 2', () => {
   });
 
   it('should increase values -1, 0 and 5 by 1', () => {
-    scheduler.run(helpers => {
-      const { cold, expectObservable } = helpers;
+    scheduler.run(({ cold, expectObservable }) => {
 
       const sourceMarbles = '  --a-b-c-|';
       const expectedMarbles = '--x-y-z-|';

@@ -13,8 +13,7 @@ describe('Riddle 7', () => {
   });
 
   it('should filter out distinct values', () => {
-    scheduler.run(helpers => {
-      const { cold, expectObservable } = helpers;
+    scheduler.run(({ cold, expectObservable }) => {
 
       const sourceMarbles = '  -a-b-c-a-b-d-d-e-d-|';
       const expectedMarbles = '-a-b-c-----d---e---|';

@@ -13,8 +13,7 @@ describe('Riddle 6', () => {
   });
 
   it('should zip multiple values', () => {
-    scheduler.run(helpers => {
-      const { cold, expectObservable } = helpers;
+    scheduler.run(({ cold, expectObservable }) => {
 
       const source1Marbles = ' -a----d--e--f|';
       const source2Marbles = ' --b--c|';
@@ -33,8 +32,7 @@ describe('Riddle 6', () => {
   });
 
   it('should zip long awaited value', () => {
-    scheduler.run(helpers => {
-      const { cold, expectObservable } = helpers;
+    scheduler.run(({ cold, expectObservable }) => {
 
       const source1Marbles = ' 5000ms a|';
       const source2Marbles = ' --b-|';

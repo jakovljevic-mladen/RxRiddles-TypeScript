@@ -13,8 +13,7 @@ describe('Riddle 3', () => {
   });
 
   it('should filter out odd values from [0, 10) array', () => {
-    scheduler.run(helpers => {
-      const { cold, expectObservable } = helpers;
+    scheduler.run(({ cold, expectObservable }) => {
 
       const sourceMarbles = '  --a-b-c-d-e-f-g-h-i-j-|';
       const expectedMarbles = '--a---c---e---g---i---|';

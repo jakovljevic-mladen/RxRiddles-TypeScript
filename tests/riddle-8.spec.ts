@@ -13,8 +13,7 @@ describe('Riddle 8', () => {
   });
 
   it('should subscribe after 200ms', () => {
-    scheduler.run(helpers => {
-      const { cold, expectObservable } = helpers;
+    scheduler.run(({ cold, expectObservable }) => {
 
       const sourceMarbles = '  -a-|';
       const expectedMarbles = '200ms -a-|';

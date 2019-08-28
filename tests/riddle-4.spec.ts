@@ -22,8 +22,7 @@ describe('Riddle 4', () => {
   });
 
   it('should emmit [false] value (verified with marbles)', () => {
-    scheduler.run(helpers => {
-      const { cold, expectObservable } = helpers;
+    scheduler.run(({ cold, expectObservable }) => {
 
       const sourceMarbles = '  --a-|';
       const expectedMarbles = '--a-|';
@@ -39,8 +38,7 @@ describe('Riddle 4', () => {
   });
 
   it('should emmit [false, true] values', () => {
-    scheduler.run(helpers => {
-      const { cold, expectObservable } = helpers;
+    scheduler.run(({ cold, expectObservable }) => {
 
       const sourceMarbles = '  --a-b-|';
       const expectedMarbles = '--a-b-|';
@@ -56,8 +54,7 @@ describe('Riddle 4', () => {
   });
 
   it('should emmit [false, true, false] values', () => {
-    scheduler.run(helpers => {
-      const { cold, expectObservable } = helpers;
+    scheduler.run(({ cold, expectObservable }) => {
 
       const sourceMarbles = '  --a-b-c-|';
       const expectedMarbles = '--a-b-c-|';
@@ -73,8 +70,7 @@ describe('Riddle 4', () => {
   });
 
   it('should emmit [false, true, false, true] values', () => {
-    scheduler.run(helpers => {
-      const { cold, expectObservable } = helpers;
+    scheduler.run(({ cold, expectObservable }) => {
 
       const sourceMarbles = '  --a-b-c-d-|';
       const expectedMarbles = '--a-b-c-d-|';

@@ -22,8 +22,7 @@ describe('Riddle 5', () => {
   });
 
   it('should sum up multiple values', () => {
-    scheduler.run(helpers => {
-      const { cold, expectObservable } = helpers;
+    scheduler.run(({ cold, expectObservable }) => {
 
       const source1Marbles = ' --a-b--c----d-|';
       const source2Marbles = ' ---b-a-b-|';
