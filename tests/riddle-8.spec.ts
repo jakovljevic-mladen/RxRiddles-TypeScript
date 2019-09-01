@@ -13,10 +13,11 @@ describe('Riddle 8', () => {
   });
 
   it('should subscribe after 200ms', () => {
-    scheduler.run(({ cold, expectObservable }) => {
+    scheduler.run(({ cold, expectObservable, expectSubscriptions }) => {
 
-      const sourceMarbles = '  -a-|';
-      const expectedMarbles = '200ms -a-|';
+      const sourceMarbles = '              -a-|';
+      const expectedMarbles = '      200ms -a-|';
+      const expectedSubscriptions = '200ms ^--!';
       const values = { a: 1 };
 
       const source$ = cold(sourceMarbles, values);
@@ -25,6 +26,7 @@ describe('Riddle 8', () => {
       const result$ = riddle8.solve(source$);
 
       expectObservable(result$).toBe(expectedMarbles, values);
+      expectSubscriptions(source$.subscriptions).toBe(expectedSubscriptions);
     });
   });
 });
