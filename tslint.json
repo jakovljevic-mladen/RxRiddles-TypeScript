@@ -1,7 +1,4 @@
 {
-  "extends": [
-    "tslint:recommended"
-  ],
   "jsRules": {},
   "rules": {
     "arrow-return-shorthand": true,
