@@ -1,6 +1,6 @@
 import { TestScheduler } from 'rxjs/testing';
 
-import { createRetryableStream } from '../helpers/helpers';
+import { createRetryableStream } from './helpers/helpers';
 import { NotFoundError } from '../models/error';
 import { Riddle14Solution } from '../solutions/riddle-14-solution';
 
