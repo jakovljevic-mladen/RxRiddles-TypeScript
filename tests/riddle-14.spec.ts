@@ -16,7 +16,6 @@ describe('Riddle 14', () => {
 
   it('should complete successfully when no errors were thrown', () => {
     scheduler.run(({ cold, expectObservable }) => {
-
       const sourceMarbles = '  --a-|';
       const expectedMarbles = '--a-|';
       const values = { a: 1 };
@@ -32,13 +31,14 @@ describe('Riddle 14', () => {
 
   it('should retry once', () => {
     scheduler.run(({ cold, expectObservable }) => {
-
+      const sourceMarble1 = '  --#';
+      const sourceMarble2 = '  ---a--|';
       const expectedMarbles = '5ms a--|';
       const values = { a: 1 };
 
       const source$ = createRetryableStream(
-        cold('--#'),
-        cold('---a--|', values)
+        cold(sourceMarble1),
+        cold(sourceMarble2, values)
       );
 
       const riddle14 = new Riddle14Solution();
@@ -50,14 +50,16 @@ describe('Riddle 14', () => {
 
   it('should retry two times', () => {
     scheduler.run(({ cold, expectObservable }) => {
-
+      const sourceMarble1 = '  --#';
+      const sourceMarble2 = '  -----#';
+      const sourceMarble3 = '  ---a--|';
       const expectedMarbles = '10ms a--|';
       const values = { a: 1 };
 
       const source$ = createRetryableStream(
-        cold('--#'),
-        cold('-----#'),
-        cold('---a--|', values)
+        cold(sourceMarble1),
+        cold(sourceMarble2),
+        cold(sourceMarble3, values)
       );
 
       const riddle14 = new Riddle14Solution();
@@ -69,13 +71,15 @@ describe('Riddle 14', () => {
 
   it('should error after 2 unsuccessful retries', () => {
     scheduler.run(({ cold, expectObservable }) => {
-
+      const sourceMarble1 = '  --#';
+      const sourceMarble2 = '  -----#';
+      const sourceMarble3 = '  ----#';
       const expectedMarbles = '11ms #';
 
       const source$ = createRetryableStream(
-        cold('--#'),
-        cold('-----#'),
-        cold('----#')
+        cold(sourceMarble1),
+        cold(sourceMarble2),
+        cold(sourceMarble3)
       );
 
       const riddle14 = new Riddle14Solution();
@@ -87,13 +91,14 @@ describe('Riddle 14', () => {
 
   it('should error if NotFoundError has been emitted', () => {
     scheduler.run(({ cold, expectObservable }) => {
-
+      const sourceMarble1 = '  --#';
+      const sourceMarble2 = '  ----a--|';
       const expectedMarbles = '--#';
       const values = { a: 1 };
 
       const source$ = createRetryableStream(
-        cold('--#', undefined, new NotFoundError()),
-        cold('----a--|', values)
+        cold(sourceMarble1, undefined, new NotFoundError()),
+        cold(sourceMarble2, values)
       );
 
       const riddle14 = new Riddle14Solution();

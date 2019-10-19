@@ -2,7 +2,7 @@ import { TestScheduler } from 'rxjs/testing';
 
 import { Riddle30Solution } from '../solutions/riddle-30-solution';
 
-fdescribe('Riddle 30', () => {
+describe('Riddle 30', () => {
 
   let scheduler: TestScheduler;
 
