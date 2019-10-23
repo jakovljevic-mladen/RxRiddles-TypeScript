@@ -9,7 +9,7 @@ export class Riddle30Solution implements Riddle30 {
   }
 }
 
-function doOnSubscribe<T>(onSubscribe: () => void): (source: Observable<T>) => Observable<T> {
+export function doOnSubscribe<T>(onSubscribe: () => void): (source: Observable<T>) => Observable<T> {
   return (source: Observable<T>): Observable<T> => defer(() => {
     onSubscribe();
 
